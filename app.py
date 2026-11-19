@@ -1,3 +1,5 @@
+import os
+
 import gradio as gr
 from research_manager import ResearchManager
 
@@ -153,4 +155,10 @@ with gr.Blocks(title="Findora — Research, made clear") as ui:
 
 
 if __name__ == "__main__":
-    ui.launch(inbrowser=True, theme=theme, css=CUSTOM_CSS)
+    ui.launch(
+        server_name="0.0.0.0",
+        server_port=int(os.environ.get("PORT", "7860")),
+        inbrowser=False,
+        theme=theme,
+        css=CUSTOM_CSS,
+    )
